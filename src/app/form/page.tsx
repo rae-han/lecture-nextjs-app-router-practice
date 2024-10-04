@@ -1,13 +1,13 @@
 import React from 'react';
 import Form from '@components/Form';
-import Input from '@components/Input';
 import Button from '@components/Button';
+import FormInput from '@components/FormInput';
 
 const Page = () => {
   return (
     <Form>
-      <Input />
-      <Button />
+      <FormInput placeholder={'입력해 주세요'} />
+      <Button type={'submit'} />
     </Form>
   );
 };

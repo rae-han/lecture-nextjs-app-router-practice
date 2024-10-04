@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Input = () => {
+interface Prosp {
+  placeholder: string;
+}
+
+const Input = ({placeholder}: Prosp) => {
   return (
-    <input />
+    <input placeholder={placeholder} />
   );
 };
 
