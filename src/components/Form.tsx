@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface Props {
+interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode
 }
 
-const Form = ({ children }: Props) => {
+const Form = ({ children, ...rest }: Props) => {
   return (
-    <form>
+    <form {...rest}>
       {children}
     </form>
   );

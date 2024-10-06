@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface Prosp {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
 }
 
-const Input = ({placeholder}: Prosp) => {
+const Input = ({ placeholder, ...rest }: Props) => {
   return (
-    <input placeholder={placeholder} />
+    <input placeholder={placeholder} {...rest} />
   );
 };
 
