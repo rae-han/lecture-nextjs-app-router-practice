@@ -13,8 +13,8 @@ const Page = () => {
 
   return (
     <Form action={dispatch}>
-      <FormInput name={'name'} placeholder={'입력해 주세요'} />
-      <FormInput name={'id'} placeholder={'입력해 주세요'} />
+      <FormInput name={'email'} placeholder={'입력해 주세요'} errors={state?.fieldErrors.email} />
+      <FormInput name={'name'} placeholder={'입력해 주세요'} errors={state?.fieldErrors.name} />
       <Button type={'submit'} />
     </Form>
   );
