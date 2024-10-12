@@ -11,8 +11,8 @@ interface Props {
 
 console.log(1112)
 
-export default function ImagePage({params}: Props) {
-  const newsItemSlug = params.slug;
+export default async function ImagePage({params}: Props) {
+  const {slug: newsItemSlug} = await params;
   const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsItemSlug);
 
   if (!newsItem) {
@@ -23,7 +23,10 @@ export default function ImagePage({params}: Props) {
     <>
       <h2>Normal.</h2>
       <div className="fullscreen-image">
-        <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
+        {/*<img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />*/}
+        <h2>{newsItem.title}</h2>
+        <img src={`/images/news/icon_logo.png`} alt={newsItem.title} />
+        <p>{newsItem.content}</p>
       </div>
     </>
   );

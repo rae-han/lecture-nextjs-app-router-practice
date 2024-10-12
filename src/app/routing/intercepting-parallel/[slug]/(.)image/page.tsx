@@ -10,8 +10,8 @@ interface Props {
   }
 }
 
-export default function InterceptedImagePage({ params }: Props) {
-  const newsItemSlug = params.slug;
+export default async function InterceptedImagePage({ params }: Props) {
+  const {slug: newsItemSlug} = await params;
   const newsItem = DUMMY_NEWS.find(
     (newsItem) => newsItem.slug === newsItemSlug
   );

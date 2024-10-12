@@ -13,7 +13,8 @@ const InterceptingParallelRouting = () => {
           {DUMMY_NEWS.map((newsItem) => (
             <li key={newsItem.id}>
               <Link href={`/routing/intercepting-parallel/${newsItem.slug}/image`}>
-                <Image width={320} height={180} src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
+                {/*<Image width={320} height={180} src={`/images/news/${newsItem.image}`} alt={newsItem.title} />*/}
+                <Image width={320} height={180} src={`/images/news/icon_logo.png`} alt={newsItem.title} />
                 <span>{newsItem.title}</span>
               </Link>
             </li>
