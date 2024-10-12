@@ -2,10 +2,12 @@
 
 import {z} from 'zod';
 
+const checkUsername = (username: string) => !username.includes('a')
+
 const nameSchema = z.string({
   invalid_type_error: '문자열이 아닙니다',
   required_error: '이름을 입력해주세요',
-}).min(2, '너무 짧음').max(20, '너무 김').refine((username) => !username.includes('a'), 'no A');
+}).min(2, '너무 짧음').max(20, '너무 김').refine(checkUsername, 'no A');
 // string 메서드 기준
 // - invalid_type_error: 타입이 안맞는 경우(string인데 number로 들어온 경우)
 // - required_error: 필수값이 안들어온 경우
