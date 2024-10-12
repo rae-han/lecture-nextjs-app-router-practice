@@ -2,11 +2,19 @@
 
 import {z} from 'zod';
 
-const nameSchema = z.string().min(2).max(20);
+const nameSchema = z.string({
+  invalid_type_error: '문자열이 아닙니다',
+  required_error: '이름을 입력해주세요',
+}).min(2, '너무 짧음').max(20, '너무 김').refine(() => false, 'custom error');
+// string 메서드 기준
+// - invalid_type_error: 타입이 안맞는 경우(string인데 number로 들어온 경우)
+// - required_error: 필수값이 안들어온 경우
+//  - 기본 적으로 모든 값을 필수이고, 필수값이 아닌 경우에는 .optional()을 사용
+
 
 const formSchema = z.object({
-  name: nameSchema,
   email: z.string().email(),
+  name: nameSchema,
 })
 
 export async function createAccount(prevState: any, formData: FormData) {
