@@ -15,6 +15,8 @@ const Page = () => {
     <Form action={dispatch}>
       <FormInput name={'email'} placeholder={'입력해 주세요'} errors={state?.fieldErrors.email} />
       <FormInput name={'name'} placeholder={'입력해 주세요'} errors={state?.fieldErrors.name} />
+      <FormInput name={'password'} placeholder={'비밀번호'} errors={state?.fieldErrors.password} />
+      <FormInput name={'confirm_password'} placeholder={'비밀번호 확인'} errors={state?.fieldErrors.confirm_password} />
       <Button type={'submit'} />
     </Form>
   );

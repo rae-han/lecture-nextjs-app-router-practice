@@ -4,6 +4,8 @@ import {z} from 'zod';
 
 const checkUsername = (username: string) => !username.includes('a')
 
+const checkPasswords = ({password, confirm_password}: {password: string, confirm_password: string}) => password === confirm_password
+
 const nameSchema = z.string({
   invalid_type_error: '문자열이 아닙니다',
   required_error: '이름을 입력해주세요',
@@ -19,12 +21,24 @@ const nameSchema = z.string({
 const formSchema = z.object({
   email: z.string().email(),
   name: nameSchema,
-})
+  password: z.string(),
+  confirm_password: z.string()
+// }).refine(checkPasswords, 'Both password should be the same!');
+// 두 값을 비교할 때는 zod object에 refine 사용 가능하다.
+// 다만 이 값은 fieldError가 아닌 form에러에 나타난다.
+// 이때 에러 객체에 타겟을 정해주면 field에 보내줄 수 있다.
+}).refine(checkPasswords, {
+  message: 'Both password should be the same!',
+  path: ['confirm_password']
+});
+
 
 export async function createAccount(prevState: any, formData: FormData) {
   const data = {
     name: formData.get('name'),
     email: formData.get('email'),
+    password: formData.get('password'),
+    confirm_password: formData.get('confirm_password'),
   }
 
   console.log({data})
