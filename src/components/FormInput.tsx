@@ -2,14 +2,15 @@ import React from 'react';
 import Input from '@components/Input';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string;
   placeholder?: string;
   errors?: string[];
 }
 
-const FormInput = ({ placeholder = '', errors = [], ...rest }: Props) => {
+const FormInput = ({ name, placeholder = '', errors = [], ...rest }: Props) => {
   return (
     <div>
-      <Input placeholder={placeholder} {...rest}  />
+      <Input name={name} placeholder={placeholder} {...rest}  />
       {errors.map((error, index) => (
         <p key={index}>{error}</p>
       ))}

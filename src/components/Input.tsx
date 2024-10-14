@@ -1,12 +1,13 @@
 import React from 'react';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string
   placeholder: string;
 }
 
-const Input = ({ placeholder, ...rest }: Props) => {
+const Input = ({ name, placeholder, ...rest }: Props) => {
   return (
-    <input placeholder={placeholder} {...rest} />
+    <input name={name} placeholder={placeholder} {...rest} />
   );
 };
 
