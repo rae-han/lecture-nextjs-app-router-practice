@@ -21,12 +21,13 @@ const nameSchema = z.string({
 const formSchema = z.object({
   email: z.string().email(),
   name: nameSchema,
-  password: z.string(),
+  password: z.string().regex(/[a-z0-9]/g, '소문자만 가능'),
   confirm_password: z.string()
 // }).refine(checkPasswords, 'Both password should be the same!');
 // 두 값을 비교할 때는 zod object에 refine 사용 가능하다.
 // 다만 이 값은 fieldError가 아닌 form에러에 나타난다.
 // 이때 에러 객체에 타겟을 정해주면 field에 보내줄 수 있다.
+// regex메서드를 이용해 정규표현식을 이용한 검증이 가능하다.
 }).refine(checkPasswords, {
   message: 'Both password should be the same!',
   path: ['confirm_password']
